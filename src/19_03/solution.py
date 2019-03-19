@@ -45,3 +45,14 @@ class Tests(unittest.TestCase):
         ans2 = solve([1], 2)
         self.assertFalse(ans1)
         self.assertFalse(ans2)
+
+    def test_with_large_input(self):
+        """In this test it use a really large input (n=10**4) made only by \
+            even numbers    
+        """
+        with open('large_input_evens.txt') as f:
+            l = [int(x) for x in f.readline().split(',')]
+        ans_odd = solve(l, 1001)
+        ans_even = solve(l, l[0]+l[-1])
+        self.assertFalse(ans_odd)
+        self.assertTrue(ans_even)
