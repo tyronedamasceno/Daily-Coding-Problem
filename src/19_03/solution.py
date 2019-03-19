@@ -11,9 +11,10 @@ Bonus: Can you do this in one pass?
 
 
 """
-My solution time complexity is O(n), where n is the input list length.
-
-It's not doing in one pass yet as the bonus ask for.
+My solution time complexity is O(n) in both sulutions, where n is the input 
+list length.
+But the solution bonus 'in one pass' has a better constant, because it 
+just iterate once over the input.
 """
 
 import unittest
