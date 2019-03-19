@@ -9,6 +9,13 @@ For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
 Bonus: Can you do this in one pass?
 """
 
+
+"""
+My solution time complexity is O(n), where n is the input list length.
+
+It's not doing in one pass yet as the bonus ask for.
+"""
+
 import unittest
 
 
