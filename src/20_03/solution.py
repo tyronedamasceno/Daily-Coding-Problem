@@ -61,3 +61,8 @@ class Tests(unittest.TestCase):
         self.assertEqual(
             solve([0, 3, 2, 1, 0]), [0, 0, 0, 0, 0]
         )
+
+    def test_with_negative_input(self):
+        self.assertEqual(
+            solve([4, -2, 3, 5, -1]), [30, -60, 40, 24, -120]
+        )
