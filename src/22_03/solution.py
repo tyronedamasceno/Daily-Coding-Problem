@@ -12,6 +12,16 @@ The input [1, 2, 0] should give 3.
 You can modify the input array in-place.
 """
 
+"""
+The 'min' operation over a set has linear complexity O(n).
+The 'in' operator over sets has constant complexity O(1).
+So my solution time complexity is O(n).
+
+The memory is not constant because I create a auxiliary set with variable size 
+on input list length.
+I will try to improve this.
+"""
+
 import unittest
 
 def solve(inp_list=None):
