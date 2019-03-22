@@ -38,3 +38,10 @@ class Tests(unittest.TestCase):
         ans2 = solve()
         self.assertEqual(ans1, 1)
         self.assertEqual(ans2, 1)
+
+    def test_with_large_input(self):
+        """This input is a shuffled array from 0 to 99999"""
+        with open("large_input.txt") as f:
+            l = [int(x) for x in f.readline().split(",")]
+        ans = solve(l)
+        self.assertEqual(ans, 100000)
