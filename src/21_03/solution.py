@@ -28,12 +28,37 @@ class Node:
         self.right = right
     
 
-def serialize(node):
-    pass
+def serialize(tree_root):
+    nodes_list = perform_serialize(tree_root)
+    return ' '.join(str(node_val) for node_val in nodes_list)
 
 
-def deserialize(node_str):
-    pass
+def perform_serialize(node):
+    nodes_list = []
+    if node:
+        nodes_list.append(node.val)
+        nodes_list.extend(perform_serialize(node.left))
+        nodes_list.extend(perform_serialize(node.right))
+    else:
+        nodes_list.append('@')  # '@' means null
+    return nodes_list
+
+
+def deserialize(tree_str):
+    tree_list = tree_str.split(' ')
+    return perform_deserialize(tree_list)
+
+
+def perform_deserialize(nodes_list):
+    if len(nodes_list):
+        value = nodes_list.pop(0)
+        if value != '@':
+            node = Node(value)
+            node.left = perform_deserialize(nodes_list)
+            node.right = perform_deserialize(nodes_list)
+        else:
+            node = Node(None)
+    return node
 
 
 class Tests(unittest.TestCase):
