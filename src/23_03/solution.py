@@ -29,6 +29,7 @@ the first and second arguments of a 2-tuple respectively. I do this with basic
 lambda functions.
 
 I'll try to understand better the problem and improve my solution explanation.
+Look functional programming could be a good bet.
 """
 
 import unittest
