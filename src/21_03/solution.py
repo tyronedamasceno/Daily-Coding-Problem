@@ -29,16 +29,8 @@ class Node:
     
 
 def serialize(node):
-    left_son = ''
-    right_son = ''
-    if node.left:
-        left_son = serialize(node.left)
-    if node.right:
-        right_son = serialize(node.right)
-    if left_son == '' and right_son == '':
-        return f'{node.val}'
-    return f'{node.val}: ({left_son} - {right_son})'
-    
+    pass
+
 
 def deserialize(node_str):
     pass
