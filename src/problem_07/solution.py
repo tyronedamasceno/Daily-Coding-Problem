@@ -42,3 +42,7 @@ class Tests(unittest.TestCase):
     def test_with_zeroes(self):
         ans = solve('10203')
         self.assertEqual(ans, 1)
+
+    def test_by_cinthia(self):
+        ans = solve('12345678')
+        self.assertEqual(ans, 3)
