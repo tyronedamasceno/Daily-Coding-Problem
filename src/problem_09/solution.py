@@ -12,6 +12,16 @@ Follow-up: Can you do this in O(N) time and constant space?
 
 import unittest
 
+def solve(inp_list):
+    def solve_inner(inp_list, pos, sum):
+        if pos >= len(inp_list):
+            return sum
+        x = sum + inp_list[pos]
+        return max(
+            solve_inner(inp_list, pos+2, x),
+            solve_inner(inp_list, pos+1, sum)
+        )
+    return solve_inner(inp_list, 0, 0)
 
 
 class Tests(unittest.TestCase):
