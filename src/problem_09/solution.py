@@ -39,10 +39,6 @@ class Tests(unittest.TestCase):
     def test_with_negative_numbers(self):
         ans = solve([-2, 0, -7])
         self.assertEqual(ans, 0)
-    
-    def test_empty_list(self):
-        ans = solve([])
-        self.assertEqual(ans, 0)
 
     def test_with_medium_input(self):
         l = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
