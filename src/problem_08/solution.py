@@ -75,3 +75,17 @@ class Tests(unittest.TestCase):
         globals()['total'] = 0
         solve(tree)
         self.assertEqual(globals()['total'], 2)
+    
+    def test_more_complex_tree(self):
+        tree = Node(
+            1,
+            Node(2, Node(2), Node(2)),
+            Node(
+                3,
+                Node(4, Node(3), Node(3)),
+                Node(4, Node(4), Node(4))
+            )
+        )
+        globals()['total'] = 0
+        solve(tree)
+        self.assertEqual(globals()['total'], 8)
