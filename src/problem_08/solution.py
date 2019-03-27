@@ -54,5 +54,24 @@ def solve(node):
 class Tests(unittest.TestCase):
     def test_example(self):
         tree = Node(0, Node(1), Node(0, Node(1, Node(1), Node(1)), Node(0)))
+        globals()['total'] = 0
         solve(tree)
         self.assertEqual(globals()['total'], 5)
+
+    def test_one_single_node(self):
+        tree = Node(1)
+        globals()['total'] = 0
+        solve(tree)
+        self.assertEqual(globals()['total'], 1)
+
+    def test_complete_tree(self):
+        tree = Node(1, Node(1), Node(1))
+        globals()['total'] = 0
+        solve(tree)
+        self.assertEqual(globals()['total'], 3)
+    
+    def test_complete_tree_with_distinct_nodes(self):
+        tree = Node(1, Node(2), Node(3))
+        globals()['total'] = 0
+        solve(tree)
+        self.assertEqual(globals()['total'], 2)
