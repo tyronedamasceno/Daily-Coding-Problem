@@ -22,10 +22,37 @@ class Node:
         self.value = value
         self.left = left
         self.right = right
+    
+    def is_leave(self):
+        return self.left is None and self.right is None
+
+total = 0
+def solve(node):
+    if node.is_leave():
+        globals()['total'] += 1
+        return True
+    if not node.left is None and not node.right is None:
+        unival_left = solve(node.left)
+        unival_right = solve(node.right)
+        if unival_left and unival_right and (
+            node.value == node.left.value and node.value == node.right.value):
+            globals()['total'] += 1
+            return True
+        return False
+    elif not node.left is None:
+        unival_left = solve(node.left)
+        if unival_left and node.value == node.left.value:
+            globals()['total'] += 1
+            return True
+    else:
+        unival_right = solve(node.right)
+        if unival_left and node.value == node.right.value:
+            globals()['total'] += 1
+            return True
 
 
 class Tests(unittest.TestCase):
     def test_example(self):
         tree = Node(0, Node(1), Node(0, Node(1, Node(1), Node(1)), Node(0)))
-        ans = solve(tree)
-        self.assertEqual(ans, 5)
+        solve(tree)
+        self.assertEqual(globals()['total'], 5)
