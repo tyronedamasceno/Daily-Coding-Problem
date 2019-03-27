@@ -17,6 +17,10 @@ For example, the following tree has 5 unival subtrees:
 
 import unittest
 
+"""
+My recursive solution has O(n) time complexity with n=number_of_nodes.
+"""
+
 class Node:
     def __init__(self, value, left=None, right=None):
         self.value = value
