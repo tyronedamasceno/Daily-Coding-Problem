@@ -47,6 +47,10 @@ class Tests(unittest.TestCase):
         self.assertEqual(ans1, 1)
         self.assertEqual(ans2, 1)
 
+    def test_with_singleton_one(self):
+        ans = solve([1])
+        self.assertEqual(ans, 2)
+
     def test_with_large_input(self):
         """This input is a shuffled array from 0 to 99999"""
         with open("large_input.txt") as f:
