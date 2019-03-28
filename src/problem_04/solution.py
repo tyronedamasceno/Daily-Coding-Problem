@@ -27,7 +27,7 @@ def solve(inp_list=None):
         return 1
     s = set(inp_list)
     minimum = min(s)
-    for x in range(1, len(inp_list) + 1):
+    for x in range(1, len(inp_list) + 2):
         if not x in s:
             return x
 
