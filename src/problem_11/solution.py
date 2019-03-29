@@ -41,3 +41,12 @@ class Tests(unittest.TestCase):
         ans_cat = get_words('cat', prepared_data)
         self.assertIn('internet', ans_in)
         self.assertIn('categories', ans_cat)
+    
+    def test_very_large_input(self):
+        with open("wiki-100k.txt") as f: 
+            l = (x[:-1] for x in f.readlines())
+        prepared_data = prepare(l)
+        ans_in = get_words('in', prepared_data)
+        ans_cat = get_words('cat', prepared_data)
+        self.assertIn('internet', ans_in)
+        self.assertIn('categories', ans_cat)
