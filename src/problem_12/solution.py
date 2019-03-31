@@ -18,10 +18,23 @@ you could climb 1, 3, or 5 steps at a time.
 
 import unittest
 
-
+def solve(n):
+    if n <= 2:
+        return n
+    return solve(n-1) + solve(n-2)
+    
 class Tests(unittest.TestCase):
+    def test_n_zero(self):
+        self.assertEqual(solve(0), 0)
+
     def test_n_one(self):
         self.assertEqual(solve(1), 1)
     
     def test_n_two(self):
         self.assertEqual(solve(2), 2)
+
+    def test_n_three(self):
+        self.assertEqual(solve(3), 3)
+
+    def test_n_four(self):
+        self.assertEqual(solve(4), 5)
