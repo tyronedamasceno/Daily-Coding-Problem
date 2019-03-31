@@ -18,6 +18,10 @@ you could climb 1, 3, or 5 steps at a time.
 
 import unittest
 
+"""
+This solution solves efficiently the original problem (1 or 2 steps allowed).
+It uses dynamic programming and memoization techniques and has linear time complexity.
+"""
 def solve(n, d):
     if d.get(n) is not None:
         return d.get(n)
