@@ -16,6 +16,7 @@ any number from a set of positive integers X? For example, if X = {1, 3, 5},
 you could climb 1, 3, or 5 steps at a time.
 """
 
+import functools
 import unittest
 
 """
@@ -29,28 +30,44 @@ def solve(n, d):
     d[n] = x
     return x
 
+"""
+This solution handle the reuse of data (memoization) implicitly with the 
+python decorator functools.lru_cache
+"""
+@functools.lru_cache()
+def solve_lru_cache(n):
+    if n <= 2:
+        return n
+    return solve_lru_cache(n-1) + solve_lru_cache(n-2)
 
-class Tests(unittest.TestCase):
+
+class OriginalTests(unittest.TestCase):
     def test_n_zero(self):
         d = {0:0, 1:1, 2:2}
         self.assertEqual(solve(0, d), 0)
+        self.assertEqual(solve_lru_cache(0), 0)
 
     def test_n_one(self):
         d = {0:0, 1:1, 2:2}
         self.assertEqual(solve(1, d), 1)
+        self.assertEqual(solve_lru_cache(1), 1)
     
     def test_n_two(self):
         d = {0:0, 1:1, 2:2}
         self.assertEqual(solve(2, d), 2)
+        self.assertEqual(solve_lru_cache(2), 2)
 
     def test_n_three(self):
         d = {0:0, 1:1, 2:2}
         self.assertEqual(solve(3, d), 3)
+        self.assertEqual(solve_lru_cache(3), 3)
 
     def test_n_four(self):
         d = {0:0, 1:1, 2:2}
         self.assertEqual(solve(4, d), 5)
+        self.assertEqual(solve_lru_cache(4), 5)
 
     def test_n_98(self):
         d = {0:0, 1:1, 2:2}
         self.assertEqual(solve(98, d), 218922995834555169026)
+        self.assertEqual(solve_lru_cache(98), 218922995834555169026)
