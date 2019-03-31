@@ -22,7 +22,8 @@ def solve(n):
     if n <= 2:
         return n
     return solve(n-1) + solve(n-2)
-    
+
+
 class Tests(unittest.TestCase):
     def test_n_zero(self):
         self.assertEqual(solve(0), 0)
@@ -38,3 +39,6 @@ class Tests(unittest.TestCase):
 
     def test_n_four(self):
         self.assertEqual(solve(4), 5)
+
+    def test_n_98(self):
+        self.assertEqual(solve(98), 218922995834555169026)
