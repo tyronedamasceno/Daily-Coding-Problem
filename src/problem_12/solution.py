@@ -41,6 +41,17 @@ def solve_lru_cache(n):
     return solve_lru_cache(n-1) + solve_lru_cache(n-2)
 
 
+X = []
+@functools.lru_cache()
+def solve_modified(n):
+    if n == 0:
+        return 1
+    elif n in X:
+        return 1 + sum(solve_modified(n - x) for x in X if x < n)
+    else:
+        return sum(solve_modified(n - x) for x in X if x < n)
+
+
 class OriginalTests(unittest.TestCase):
     def test_n_zero(self):
         d = {0:0, 1:1, 2:2}
@@ -71,3 +82,15 @@ class OriginalTests(unittest.TestCase):
         d = {0:0, 1:1, 2:2}
         self.assertEqual(solve(98, d), 218922995834555169026)
         self.assertEqual(solve_lru_cache(98), 218922995834555169026)
+
+
+class ModifiedTests(unittest.TestCase):
+    def test_modified_135_base(self):
+        globals()['X'] = [1, 3, 5]
+        self.assertEqual(solve_modified(1), 1)
+        self.assertEqual(solve_modified(2), 1)
+        self.assertEqual(solve_modified(3), 2)
+    
+    def test_modified_135_large(self):
+        globals()['X'] = [1, 3, 5]
+        self.assertEqual(solve_modified(100), 20285172757012753619)
