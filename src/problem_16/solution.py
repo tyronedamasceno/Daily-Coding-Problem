@@ -11,7 +11,27 @@ You should be as efficient with time and space as possible.
 
 import unittest
 
+class LogBuffer:
+    def __init__(self, N):
+        self.N = N
+        self.buffer = ['']*N
+        self.cur = 0
+
+    def record(self, order_id):
+        self.buffer[self.cur] = order_id
+        self.cur += 1
+        self.cur %= self.N
+
+    def get_last(self, i):
+        x = (self.cur - i + self.N) % self.N
+        return self.buffer[x]
+
 
 class Tests(unittest.TestCase):
     def test_example(self):
-        pass
+        log = LogBuffer(3)
+        for i in range(6):
+            log.record(i)
+        self.assertEqual(log.get_last(1), 5)
+        self.assertEqual(log.get_last(2), 4)
+        self.assertEqual(log.get_last(3), 3)
