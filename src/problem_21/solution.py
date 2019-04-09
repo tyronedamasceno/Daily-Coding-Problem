@@ -5,6 +5,10 @@ Given an array of time intervals (start, end) for classroom lectures
 For example, given [(30, 75), (0, 50), (60, 150)], you should return 2.
 """
 
+"""
+Solution time complexity is O(nlogn) due to sorting the input list.
+"""
+
 import unittest
 
 def solve(inp_list=None):
