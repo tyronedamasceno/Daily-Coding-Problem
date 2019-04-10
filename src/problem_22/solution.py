@@ -21,6 +21,11 @@ number of steps required to reach the end is 7, since we would need to go
 through (1, 2) because there is a wall everywhere else on the second row.
 """
 
+"""
+Time complexity is O(n*m) and space complexity is O(n*m)
+"""
+
+
 import unittest
 import queue
 
@@ -35,6 +40,7 @@ def solve(board, start, end):
         x, y, k = q.get()
         if (x, y) == end:
             return k
+        visited[(x, y)] = True
         if x > 0 and not visited[(x-1, y)] and not board[x-1][y]:
             q.put((x-1, y, k+1))
         if y > 0 and not visited[(x, y-1)] and not board[x][y-1]:
@@ -58,3 +64,15 @@ class Tests(unittest.TestCase):
         end = (0, 0)
         ans = solve(board, start, end)
         self.assertEqual(ans, 7)
+
+    def test_no_way(self):
+        board = [
+            [False, False, False, False],
+            [True, True, True, True],
+            [False, False, False, False],
+            [False, False, False, False]
+        ]
+        start = (3, 0)
+        end = (0, 0)
+        ans = solve(board, start, end)
+        self.assertEqual(ans, None)
