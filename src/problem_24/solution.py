@@ -31,9 +31,8 @@ class Node:
         return self.locked
 
     def _is_lockable(self):
-        if self.locked_descendants:
-            return False
-
+        if self.locked_descendants == 0:
+            return True
         parent = self.parent
         while parent:
             if parent.is_locked():
@@ -69,4 +68,22 @@ class Node:
 
 class Tests(unittest.TestCase):
     def test_example(self):
-        pass
+        root = Node(value=3)
+        root.left = Node(value=7, parent=root)
+        root.right = Node(value="four", parent=root)
+        root.left.left = Node(value=0, parent=root.left)
+
+        self.assertFalse(root.is_locked())
+        self.assertFalse(root.left.is_locked())
+        self.assertFalse(root.left.left.is_locked())
+        
+        self.assertTrue(root.lock())
+        self.assertTrue(root.lock()) #  Repeated purposely
+        self.assertTrue(root.is_locked())
+        self.assertTrue(root.left.left.lock())
+        self.assertTrue(root.left.left.is_locked())
+
+        self.assertFalse(root.left.lock())
+        self.assertTrue(root.unlock())
+        self.assertTrue(root.left.lock())
+        self.assertTrue(root.left.is_locked())
