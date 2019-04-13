@@ -9,8 +9,34 @@ Do this in constant space and in one pass.
 
 import unittest
 
+class Node:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+    def __str__(self):
+        values = []
+        while self:
+            values.append(str(self.val))
+            self = self.next
+        return ' -> '.join(values)
+
+
+def remove_k_last_from_list(head, k):
+    p1 = head
+    while k > 0:
+        p1 = p1.next
+        k -= 1
+    
+    while p1.next:
+        head = head.next
+        p1 = p1.next
+    head.next = None
 
 
 class Tests(unittest.TestCase):
     def test_example(self):
-        pass
+        head = Node(5, Node(3, Node(3, Node(1, Node(4)))))
+        self.assertEqual(str(head), '5 -> 3 -> 3 -> 1 -> 4')
+        remove_k_last_from_list(head, 3)
+        self.assertEqual(str(head), '5 -> 3')
