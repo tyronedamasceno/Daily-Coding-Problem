@@ -27,7 +27,9 @@ import unittest
 
 
 def solve(inp_list, k):
-    ans = []
+    def _find(s, ch):
+        return [i for i, ltr in enumerate(s) if ltr==ch]
+    lines = []
     cur_line = []
     for word in inp_list:
         if not len(cur_line):
@@ -35,11 +37,29 @@ def solve(inp_list, k):
         elif len(cur_line) + len(word) + 1 <= k:
             cur_line.extend([' '] + list(word))
         else:
-            ans.append(cur_line)
+            lines.append(cur_line)
             cur_line = list(word)
     if cur_line:
-        ans.append(cur_line)
-    return [''.join(line) for line in ans]
+        lines.append(cur_line)
+
+    for line in lines:
+        missing = k - len(line)
+        spaces = line.count(' ')
+        n, r = divmod(missing, spaces)
+        r = spaces - r
+        if missing:
+            if spaces:
+                spaces_idx = _find(line, ' ')
+                for i in spaces_idx[::-1]:
+                    if r:
+                        r -= 1
+                    else:
+                        line.insert(i, ' ')
+                    line.insert(i, n*' ')
+            else:
+                line = [' ']*missing + line
+
+    return [''.join(line) for line in lines]
 
 
 class Tests(unittest.TestCase):
