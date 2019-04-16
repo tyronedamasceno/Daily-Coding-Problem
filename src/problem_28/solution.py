@@ -26,6 +26,30 @@ and k = 16, you should return the following:
 import unittest
 
 
+def solve(inp_list, k):
+    ans = []
+    cur_line = []
+    for word in inp_list:
+        if not len(cur_line):
+            cur_line = list(word)
+        elif len(cur_line) + len(word) + 1 <= k:
+            cur_line.extend([' '] + list(word))
+        else:
+            ans.append(cur_line)
+            cur_line = list(word)
+    if cur_line:
+        ans.append(cur_line)
+    return [''.join(line) for line in ans]
+
+
 class Tests(unittest.TestCase):
     def test_example(self):
-        pass
+        l = ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"]
+        k = 16
+        ans = solve(l, k)
+        expected = [
+            "the  quick brown",
+            "fox  jumps  over",
+            "the   lazy   dog"
+        ]
+        self.assertEqual(ans, expected)
