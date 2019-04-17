@@ -35,3 +35,11 @@ class Tests(unittest.TestCase):
     def test_example2(self):
         l = [3, 0, 1, 3, 0, 5]
         self.assertEqual(solve(l), 8)
+
+    def test_list_length_one(self):
+        l = [4]
+        self.assertEqual(solve(l), 0)
+
+    def test_with_high_peak(self):
+        l = [5, 2, 8, 7]
+        self.assertEqual(solve(l), 3)
