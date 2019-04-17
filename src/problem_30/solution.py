@@ -15,6 +15,10 @@ in the second, and 3 in the fourth index (we cannot hold 5 since it would run
 off to the left), so we can trap 8 units of water.
 """
 
+"""
+TIme complexity is O(n) with just one pass and Space complexity is constant
+"""
+
 import unittest
 
 def solve(l):
