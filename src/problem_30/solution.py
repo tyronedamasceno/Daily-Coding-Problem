@@ -17,7 +17,21 @@ off to the left), so we can trap 8 units of water.
 
 import unittest
 
+def solve(l):
+    if len(l) < 2:
+        return 0
+    height = min(l[0], l[-1])
+    ans = 0
+    for i in l[1:-1]:
+        ans += max(0, height-i)
+    return ans
+
 
 class Tests(unittest.TestCase):
-    def test_example(self):
-        pass
+    def test_example1(self):
+        l = [2, 1, 2]
+        self.assertEqual(solve(l), 1)
+
+    def test_example2(self):
+        l = [3, 0, 1, 3, 0, 5]
+        self.assertEqual(solve(l), 8)
