@@ -9,6 +9,7 @@ Given two strings, compute the edit distance between them.
 
 
 import unittest
+import string
 
 def solve(s1, s2):
     def solve_helper(n, m):
@@ -30,3 +31,7 @@ class Tests(unittest.TestCase):
     def test_example1(self):
         ans = solve('kitten', 'sitting')
         self.assertEqual(ans, 3)
+
+    def test_asciiletters(self):
+        ans = solve(string.ascii_lowercase, string.ascii_lowercase[::-1])
+        self.assertEqual(ans, 26)
