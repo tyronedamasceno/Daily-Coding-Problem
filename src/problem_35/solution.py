@@ -9,6 +9,10 @@ For example, given the array ['G', 'B', 'R', 'R', 'B', 'R', 'G'], it should
 become ['R', 'R', 'R', 'G', 'G', 'B', 'B']
 """
 
+"""
+Solution time complexity is O(n) and space complexity is constant O(1)
+"""
+
 import unittest
 import random
 
