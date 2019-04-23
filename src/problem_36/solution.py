@@ -4,7 +4,7 @@ Given the root to a binary search tree, find the second largest node in the tree
 
 """
 My solution is quite simple:
-The second largest node is the larger bewteen the largest node's parent and left children.
+The second largest node is the larger between the largest node's parent and its left subtree largest.
 
 The solution time complexity is O(logn)
 """
