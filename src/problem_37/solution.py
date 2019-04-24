@@ -12,8 +12,16 @@ You may also use a list or array to represent a set.
 import unittest
 
 
+def powerset(base):
+    ans = [[]]
+    for x in base:
+        to_add = [subans + [x] for subans in ans]
+        ans.extend(to_add)
+    return ans
+
+
 class Tests(unittest.TestCase):
     def test_example(self):
         given = [1, 2, 3]
         expected = [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
-        self.assertEqual(powerset(given), expected)
+        self.assertEqual(sorted(powerset(given)), sorted(expected))
