@@ -18,9 +18,30 @@ class Node:
         self.left = left
         self.right = right
 
+    def is_leave(self):
+        return not self.left and not self.right
+
 
 def second_largest(root):
-    pass
+    if root.is_leave():
+        return None
+    elif not root.right:
+        root = root.left
+        while root.right:
+            root = root.right
+        return root.val
+    else:
+        ans = root.val
+        root = root.right
+        while root.right:
+            ans = root.val
+            root = root.right
+        if root.is_leave():
+            return ans
+        root = root.left
+        while root.right:
+            root = root.right
+        return root.val
 
 
 class Tests(unittest.TestCase):
@@ -34,7 +55,12 @@ class Tests(unittest.TestCase):
         ans = second_largest(BST)
         self.assertEqual(ans, 13)
 
-    def test_root_with_no_left_subtree(self):
+    def test_root_with_no_right_subtree(self):
         BST = Node(8, Node(3, Node(1), Node(6, Node(4), Node(7))))
         ans = second_largest(BST)
         self.assertEqual(ans, 7)
+
+    def test_tree_with_root_only(self):
+        BST = Node(8)
+        ans = second_largest(BST)
+        self.assertIsNone(ans)
