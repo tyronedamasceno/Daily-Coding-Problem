@@ -29,3 +29,9 @@ class Tests(unittest.TestCase):
     def test_example2(self):
         inp = [13, 19, 13, 13]
         self.assertEqual(solve(inp), 19)
+
+    def test_large_input(self):
+        """The file has all the integers between 1 and 10000 (inclusive) three times except 722"""
+        with open("large_input.txt") as f:
+            l = [int(x) for x in f.readline().split(",")]
+        self.assertEqual(solve(l), 722)
