@@ -11,7 +11,23 @@ not take any elements.
 Do this in O(N) time.
 """
 
+"""
+Solution time complexity is O(N) and space complexity is O(1)
+Classic Kadane's Algorithm
+"""
+
 import unittest
+
+
+def solve(inp):
+    tmp = 0
+    ans = 0
+    for x in inp:
+        tmp += x
+        tmp = max(tmp, 0)
+        ans = max(ans, tmp)
+    return ans
+
 
 class Tests(unittest.TestCase):
     def test_example(self):
