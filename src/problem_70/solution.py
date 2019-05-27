@@ -33,3 +33,6 @@ class Tests(unittest.TestCase):
     def test_example2(self):
         self.assertEqual(solve(2), 28)
 
+    def test_n_equal_10(self):
+        self.assertEqual(solve(10), 109)
+
