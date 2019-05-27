@@ -23,3 +23,12 @@ class Tests(unittest.TestCase):
         ans = solve([-10, -10, 5, 2])
         self.assertEqual(ans, 500)
 
+    def test_return_zero(self):
+        ans = solve([-1, 0, 1])
+        self.assertEqual(ans, 0)
+
+    def test_with_a_larger_list(self):
+        l = [-68, -27, -89, 72, 73, 0, 4, -40, -21, -92]
+        ans = solve(l)
+        self.assertEqual(ans, 597724)
+
