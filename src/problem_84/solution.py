@@ -59,3 +59,39 @@ class Tests(unittest.TestCase):
         islands = count_islands(matrix)
         self.assertEqual(islands, 4)
 
+    def test_no_islands(self):
+        matrix = [
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0]
+        ]
+        islands = count_islands(matrix)
+        self.assertEqual(islands, 0)
+
+    def test_one_line_island(self):
+        matrix = [
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0]
+        ]
+        islands = count_islands(matrix)
+        self.assertEqual(islands, 1)
+
+    def test_border_island(self):
+        matrix = [
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 1],
+            [1, 0, 0, 0, 1],
+            [1, 0, 0, 0, 1],
+            [1, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1]
+        ]
+        islands = count_islands(matrix)
+        self.assertEqual(islands, 1)
+
