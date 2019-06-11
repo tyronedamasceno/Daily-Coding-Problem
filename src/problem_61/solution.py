@@ -30,3 +30,6 @@ class Tests(unittest.TestCase):
     def test_exp_1(self):
         self.assertEqual(my_pow(2, 1), 2)
 
+    def test_odd_exp(self):
+        self.assertEqual(my_pow(2, 11), 2048)
+
