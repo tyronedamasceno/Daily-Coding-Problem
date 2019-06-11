@@ -11,6 +11,17 @@ any one element to get a non-decreasing array.
 
 import unittest
 
+
+def solve(seq):
+    counter = 0
+    for i in range(1, len(seq)):
+        if seq[i-1] > seq[i]:
+            counter += 1
+            if counter > 1:
+                return False
+    return True
+
+
 class Tests(unittest.TestCase):
     def test_example1(self):
         self.assertTrue(solve([10, 5, 7]))
