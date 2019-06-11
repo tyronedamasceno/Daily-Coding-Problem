@@ -29,3 +29,9 @@ class Tests(unittest.TestCase):
     def test_example2(self):
         self.assertFalse(solve([10, 5, 1]))
 
+    def test_singleton_sequence(self):
+        self.assertTrue(solve([1]))
+
+    def test_doubleton_sequence(self):
+        self.assertTrue(solve([5, 1]))
+
