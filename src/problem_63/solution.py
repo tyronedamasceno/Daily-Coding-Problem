@@ -16,9 +16,20 @@ since it's the last row.
 """
 
 import unittest
+from copy import deepcopy
 
 def solve(matrix, word):
-    pass
+    transp = deepcopy(matrix)
+    for i in range(len(matrix)):
+        for j in range(len(matrix)):
+            transp[i][j] = matrix[j][i]
+    for line in matrix:
+        if word in ''.join(line):
+            return True
+    for line in transp:
+        if word in ''.join(line):
+            return True
+    return False
 
 
 class Tests(unittest.TestCase):
