@@ -33,3 +33,6 @@ class Tests(unittest.TestCase):
     def test_odd_exp(self):
         self.assertEqual(my_pow(2, 11), 2048)
 
+    def test_large_number(self):
+        self.assertEqual(my_pow(2, 100000), 2**100000)
+
